@@ -4,32 +4,29 @@ const DOMSelectors = {
   containerBox: document.getElementById("container"),
 };
 
-let rollHistory1 = []
+let a=[];
+let b=[];
+
 function rollDice1P1(){
 let random = Math.floor(Math.random() * 6) + 1;
-console.log(random);
-rollHistory1.push(random)
-console.log(rollHistory1)
+a.push(random)
+console.log(a)
 }
 function rollDice2(){
   let random2 = Math.floor(Math.random() * 6) + 1;
-  console.log(random2);
-  rollHistory1.push(random2)
+  a.push(random2)
 }
-console.log(rollHistory1)
+console.log(a)
 
 
-let rollHistory2 = []
 function rollDice1P2(){
 let random = Math.floor(Math.random() * 6) + 1;
-console.log(random);
-rollHistory2.push(random)
-console.log(rollHistory2)
+b.push(random)
+console.log(b)
 }
 
 
-let a=[1,2,5];
-let b=[1,2,4];
+
 function compareDiceSums(a){
   let asum = 0
   let bsum = 0
