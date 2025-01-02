@@ -55,7 +55,7 @@ function rollDice3P2(){
   console.log(b)
   }
   
-function compareDiceSums(a){
+function compareDiceSums(){
   let asum = 0
   let bsum = 0
   for (let i=0; i<a.length; i++){
@@ -68,14 +68,13 @@ function compareDiceSums(a){
   }
   if (asum>bsum){
     console.log('A is the winner')
-  } else if (asum=bsum){
+  } if (asum===bsum){
     console.log('It is a tie')
-  } else{
+  } if(asum<bsum){
     console.log('B is the winner')
   }
 }
 
-compareDiceSums(a);
 
 DOMSelectors.containerBox.addEventListener("click", async function (event) {
 if(event.target && event.target.classList.contains("roll-1")){
@@ -110,5 +109,12 @@ DOMSelectors.containerBox2.addEventListener("click", async function (event) {
 DOMSelectors.containerBox2.addEventListener("click", async function (event) {
   if(event.target && event.target.classList.contains("roll-3-2")){
     rollDice3P2()
+  }
+  });
+
+
+DOMSelectors.containerBox2.addEventListener("click", async function (event) {
+  if(event.target && event.target.classList.contains("comparesum")){
+    compareDiceSums()
   }
   });
