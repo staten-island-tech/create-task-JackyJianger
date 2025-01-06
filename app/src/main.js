@@ -3,6 +3,10 @@ import './style.css'
 const DOMSelectors = {
   containerBox: document.getElementById("container"),
   containerBox2: document.getElementById("container2"),
+  containerBox3: document.getElementById("container3"),
+  player1Rolls: document.getElementById("player1-rolls"),
+  player2Rolls: document.getElementById("player2-rolls"),
+  result: document.getElementById("result"),
 };
 
 let a=[];
@@ -12,6 +16,7 @@ function rollDice1P1(){
 let random = Math.floor(Math.random() * 6) + 1;
 a.push(random)
 console.log(a)
+updateRollsDisplay(DOMSelectors.player1Rolls, a);
 }
 function rollDice2P1(){
   let random2 = Math.floor(Math.random() * 6) + 1;
@@ -19,6 +24,7 @@ function rollDice2P1(){
   a.push(random2)
   a.push(random3)
   console.log(a)
+  updateRollsDisplay(DOMSelectors.player1Rolls, a);
 }
 
 function rollDice3P1(){
@@ -29,12 +35,14 @@ function rollDice3P1(){
   a.push(random2)
   a.push(random3)
   console.log(a)
+  updateRollsDisplay(DOMSelectors.player1Rolls, a);
 }
 
 function rollDice1P2(){
 let random = Math.floor(Math.random() * 6) + 1;
 b.push(random)
 console.log(b)
+updateRollsDisplay(DOMSelectors.player2Rolls, b);
 }
 
 function rollDice2P2(){
@@ -43,6 +51,7 @@ function rollDice2P2(){
   b.push(random)
   b.push(random2)
   console.log(b)
+  updateRollsDisplay(DOMSelectors.player2Rolls, b);
   }
   
 function rollDice3P2(){
@@ -53,28 +62,33 @@ function rollDice3P2(){
   b.push(random2)
   b.push(random3)
   console.log(b)
+  updateRollsDisplay(DOMSelectors.player2Rolls, b);
   }
   
 function compareDiceSums(){
   let asum = 0
   let bsum = 0
+  let result = "";
   for (let i=0; i<a.length; i++){
     asum += a[i]
-  console.log(asum)
   }
   for (let i=0; i<b.length; i++){
     bsum += b[i]
-  console.log(bsum)
   }
   if (asum>bsum){
-    console.log('A is the winner')
+    result = "Player 1 is the winner";
   } if (asum===bsum){
-    console.log('It is a tie')
+    result = "It is a tie";
   } if(asum<bsum){
-    console.log('B is the winner')
+    result = "Player 2 is the winner";
   }
+  DOMSelectors.result.textContent = result;
 }
 
+
+function updateRollsDisplay(element, rolls) {
+  element.textContent = `Rolls: ${rolls.join(", ")}`;
+} 
 
 DOMSelectors.containerBox.addEventListener("click", async function (event) {
 if(event.target && event.target.classList.contains("roll-1")){
@@ -113,7 +127,7 @@ DOMSelectors.containerBox2.addEventListener("click", async function (event) {
   });
 
 
-DOMSelectors.containerBox2.addEventListener("click", async function (event) {
+DOMSelectors.containerBox3.addEventListener("click", async function (event) {
   if(event.target && event.target.classList.contains("comparesum")){
     compareDiceSums()
   }
